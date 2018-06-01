@@ -35,12 +35,10 @@ def build_base_classes(operationName, operationModule, operationBase, clsName):
 
     for directory in subdirectories:
         try:
-            print 'graphql_api.{0}.{1}'.format(directory, operationModule)
             module = importlib.import_module(
                 'graphql_api.{0}.{1}'.format(directory, operationModule)
             )
             if module:
-                print 'HERE'
                 classes = [x for x in getmembers(module, isclass)]
                 opers = [x[1] for x in classes if clsName in x[0] and x[0] != operationBase]
                 op_base_classes += opers
