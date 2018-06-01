@@ -48,8 +48,8 @@ def build_base_classes(operationName, operationModule, operationBase, clsName):
                 print 'wat?'
                 logger.info('wat?')
                 logger.debug(current_directory)
-        # except ImportError:
-        #     pass
+        except ImportError:
+            pass
 
     op_base_classes = op_base_classes[::-1]
     return op_base_classes
