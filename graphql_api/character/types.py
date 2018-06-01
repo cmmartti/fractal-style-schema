@@ -1,11 +1,15 @@
-from graphene import ObjectType, Int, String, List
-from ..data import get_games_for_character
-from ..game.types import Game
+from graphene import ObjectType, Int, String, List, lazy_import
+
+from . import resolvers as resolve
+
 
 class Character(ObjectType):
+    """A character from a video game."""
+
     id = Int()
     name = String(description="The name of this character.")
-    games = List(lambda: Game, description="Video games this character is in.")
-
-    def resolve_games(self, info):
-        return get_games_for_character(self.id)
+    games = List(
+        lazy_import("graphql_api.game.types.Game"),
+        description="Video games this character is in.",
+        resolver=resolve.games
+    )

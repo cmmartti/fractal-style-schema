@@ -1,6 +1,8 @@
-# Fractal-Style GraphQL Schema Example (Graphene-Python)
+# Fractal-Style GraphQL Schema
 
-This is an example of a fractal style GraphQL schema for Graphene-Python, where each entity has its own module. Within each module are the files `mutation`, `type`, `query`, and `subscription` that contain all of the types, queries and mutations (root), etc. for that entity. This avoids the issue of overly-long schema files that contain dozens or hundreds of types and resolvers.
+This is an example of a fractal style GraphQL schema for Graphene-Python, where each entity is in its own module. Within each module are `mutation`, `type`, `query`, `subscription`, etc. files that contain all of the types, queries, mutations, etc. for that entity. This organisation method avoids the issue of overly-long schema files that contain dozens or hundreds of types and resolvers.
+
+The `graphql_api.auto.schema_operations_builder` function assembles each part into a whole Query/Mutation, which can then be passed to `graphene.Schema` to create a schema.
 
 This specific example is a simple read-only query API for video games and characters.
 

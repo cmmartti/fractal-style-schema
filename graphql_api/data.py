@@ -1,4 +1,3 @@
-
 class Game(object):
     def __init__(self, id, name):
         self.id = id
@@ -28,9 +27,3 @@ characters = [
     Character(id=3, name="Zelda", games=[0, 1, 5]),
     Character(id=4, name="MegaMan", games=[4, 5]),
 ]
-
-def get_characters_for_game(id):
-    return [c for c in characters if id in c.games]
-
-def get_games_for_character(id):
-    return [g for g in games if g.id in characters[id].games]

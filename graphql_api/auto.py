@@ -10,6 +10,12 @@ logger = logging.getLogger(__name__)
 def schema_operations_builder(operationName, operationModule, operationBase, clsName):
 
     op_base_classes = build_base_classes(operationName, operationModule, operationBase, clsName)
+
+    if len(op_base_classes) <= 1:
+        raise ValueError("Found no '{0}' classes in '{1}' module of subdirectories.".format(
+            operationBase, operationModule
+        ))
+
     properties = {}
     # filter on scopes before this
     for base_class in op_base_classes:
@@ -36,7 +42,7 @@ def build_base_classes(operationName, operationModule, operationBase, clsName):
     for directory in subdirectories:
         try:
             module = importlib.import_module(
-                'graphql_api.{0}.{1}'.format(directory, operationModule)
+                '{0}.{1}.{2}'.format("graphql_api", directory, operationModule)
             )
             if module:
                 classes = [x for x in getmembers(module, isclass)]
@@ -46,6 +52,8 @@ def build_base_classes(operationName, operationModule, operationBase, clsName):
                 logger.info('wat?')
                 logger.debug(current_directory)
         except ImportError:
+            # This is not ideal, because it catches ALL import errors,
+            # even if they happen in other modules.
             pass
 
     op_base_classes = op_base_classes[::-1]
