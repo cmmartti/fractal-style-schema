@@ -51,9 +51,7 @@ def build_base_classes(operationName, operationModule, operationBase, clsName):
             else:
                 logger.info('wat?')
                 logger.debug(current_directory)
-        except ImportError:
-            # This is not ideal, because it catches ALL import errors,
-            # even if they happen in other modules.
+        except ImportError: # ModuleNotFoundError?
             pass
 
     op_base_classes = op_base_classes[::-1]
