@@ -8,6 +8,9 @@ The `graphql_api.auto.schema_operations_builder` function assembles each part in
 
 Circular dependencies are met using Graphene's [`lazy_import`](https://github.com/graphql-python/graphene/blob/master/graphene/utils/module_loading.py) utility function.
 
+
+## Setup
+
 This GraphQL API is built on Django. To run it, first create a virtual environment:
 
 Python2: `virtualenv venv`
