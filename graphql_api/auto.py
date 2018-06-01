@@ -34,7 +34,7 @@ def build_base_classes(operationName, operationModule, operationBase, clsName):
     op_base_classes = [OperationAbstract]
 
     for directory in subdirectories:
-        # try:
+        try:
             print 'graphql_api.{0}.{1}'.format(directory, operationModule)
             module = importlib.import_module(
                 'graphql_api.{0}.{1}'.format(directory, operationModule)
@@ -45,7 +45,6 @@ def build_base_classes(operationName, operationModule, operationBase, clsName):
                 opers = [x[1] for x in classes if clsName in x[0] and x[0] != operationBase]
                 op_base_classes += opers
             else:
-                print 'wat?'
                 logger.info('wat?')
                 logger.debug(current_directory)
         except ImportError:
