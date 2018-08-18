@@ -11,21 +11,29 @@ Circular dependencies are met using Graphene's [`lazy_import`](https://github.co
 
 ## Setup
 
-This GraphQL API is built on Django. To run it, first create a virtual environment:
+This GraphQL API is built on Django. Follow the steps below to run it on your machine:
 
-Python2: `virtualenv venv`
+1. Create a Python virtual environment:
 
-Python3: `python venv venv`
+    Python2: `virtualenv venv`
 
-Then install dependencies:
+    Python3: `python venv venv`
 
-`pip install -r requirements.txt`
+2. Activate the virtual environment:
 
-Then start the dev server:
+    Windows: `venv\Scripts\activate`
 
-`python manage.py runserver`
+    *nix: `source venv/bin/activate`
 
-Open your browser to localhost:8000/graphql to view the GraphiQL IDE.
+3. Install dependencies:
+
+    `pip install -r requirements.txt`
+
+4. Start the dev server:
+
+    `python manage.py runserver`
+
+5. Open your browser to localhost:8000/graphql to view the GraphiQL IDE.
 
 ---
 
